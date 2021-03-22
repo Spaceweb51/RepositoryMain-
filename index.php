@@ -12,7 +12,7 @@
 	<body>
 		<?php include("includes/header.php"); ?>
 			<div class="content">
-				<form class="connection_form" action="../traitement/trait_connexion.php" method="post">
+				<form class="connection_form" action="traitement/trait_connexion.php" method="post">
 					<fieldset>
 						<legend>Connexion</legend>
 							
