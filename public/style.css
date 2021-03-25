@@ -36,95 +36,6 @@ h1, h2, h3, h4
 	display:flex;
 	flex-direction:column;
 }
-.accueil_content form
-{
-
-	width:66%;
-	margin:auto;
-	/*margin-top:10%;*/
-}
-.accueil_content fieldset
-{
-	width:90%;
-	height:90%;
-	margin:auto;
-	display:flex;
-	padding-top:5%;
-	padding-bottom:3%;
-	flex-direction:column;
-	border:none;
-	border-radius:1em;
-	box-shadow:0 0 10px black;
-}
-.accueil_content legend
-{
-	margin:auto;
-	font-size:2em;
-	padding-left:2em;
-	padding-right:2em;
-	background:#FFF;
-	box-shadow:0 0 2px black;
-	text-align:center;
-}
-.accueil_content label, .accueil_content input
-{
-	width:50%;
-	margin:auto;
-}
-.accueil_content label
-{
-	width:90%;
-	text-align:center;
-	margin-bottom:0.8em;
-}
-.accueil_content input
-{
-	margin-top: .5em;
-	margin-bottom:1em;
-	height:2em;	
-}
-.accueil_content a 
-{
-	text-decoration:none;
-	text-align:center;
-	color:black;
-	transition:.5s;
-}
-.accueil_content a:hover
-{
-	color:#195891;
-	transition:.3s;
-}
-.connection_link
-{
-	display:flex;
-	margin:auto;
-	font-weight:bold;
-}
-.connection_link p
-{
-	margin:0;
-	margin-left:1em;
-	margin-right:1em;
-}
-.accueil_content form p
-{
-	text-align:center;
-}
-.accueil_content input[type="submit"]
-{
-	width:20%;
-	height:3em;
-	margin-top:3em;
-	margin-bottom:3em;
-	border-radius:2em;
-	font-family: 'Georgia';
-	font-size:16px;	
-}
-legend
-{
-	border-radius:1em;
-}
 /* === HEADER CONTENT === */
 .header_content
 {
@@ -191,4 +102,175 @@ legend
 {
 	color:#195891;
 	transition: .2s;
+}
+/* === ACCUEIL CONTENT + REINIT === */
+.accueil_content form, .reinit_content form{
+
+	width:66%;
+	margin:auto;
+	/*margin-top:10%;*/
+}
+.accueil_content fieldset, .reinit_content fieldset
+{
+	width:90%;
+	height:90%;
+	margin:auto;
+	display:flex;
+	padding-top:5%;
+	padding-bottom:3%;
+	flex-direction:column;
+	border:none;
+	border-radius:1em;
+	box-shadow:0 0 10px black;
+}
+.accueil_content legend, .reinit_content legend
+{
+	margin:auto;
+	font-size:2em;
+	padding-left:2em;
+	padding-right:2em;
+	background:#FFF;
+	box-shadow:0 0 2px black;
+	text-align:center;
+}
+.accueil_content label, .accueil_content input,  .reinit_content label, .reinit_content input
+{
+	width:50%;
+	margin:auto;
+}
+.accueil_content label, .reinit_content label
+{
+	width:90%;
+	text-align:center;
+	margin-bottom:0.8em;
+}
+.accueil_content input, .reinit_content input
+{
+	margin-top: .5em;
+	margin-bottom:1em;
+	height:2em;	
+}
+.accueil_content a 
+{
+	text-decoration:none;
+	text-align:center;
+	color:black;
+	transition:.5s;
+}
+.accueil_content a:hover
+{
+	color:#195891;
+	transition:.3s;
+}
+.connection_link
+{
+	display:flex;
+	margin:auto;
+	font-weight:bold;
+}
+.connection_link p
+{
+	margin:0;
+	margin-left:1em;
+	margin-right:1em;
+}
+.accueil_content .long_legend, .reinit_content .long_legend
+{
+	font-size:1.5em;
+}
+.accueil_content form p, .reinit_content form p
+{
+	text-align:center;
+}
+.accueil_content input[type="submit"], .reinit_content input[type="submit"]
+{
+	width:20%;
+	height:3em;
+	margin-top:3em;
+	margin-bottom:3em;
+	border-radius:2em;
+	font-family: 'Georgia';
+	font-size:16px;	
+}
+legend
+{
+	border-radius:1em;
+}
+
+/* === INSCRIPTION CONTENT === */
+.inscription_content form
+{
+	width:66%;
+	margin:auto;
+	margin-top:5%;
+	margin-bottom:5%;
+}
+.inscription_content fieldset
+{
+	width:90%;
+	height:90%;
+	margin:auto;
+	display:flex;
+	padding-top:5%;
+	padding-bottom:5%;
+	flex-direction:column;
+	border:none;
+	border-radius:1em;
+	box-shadow:0 0 10px black;
+}
+.inscription_content legend
+{
+	margin:auto;
+	font-size:2em;
+	padding-left:2em;
+	padding-right:2em;
+	background:#FFF;
+	box-shadow:0 0 2px black;
+}
+/*legend
+{
+	border-radius:1em;
+}*/
+.inscription_content label
+{
+	width:70%;
+	margin:auto;
+}
+.inscription_content input
+{
+	width:50%;
+	margin:auto;
+}
+.inscription_content input
+{
+	margin-bottom:1em;
+	height:2em;
+}
+.inscription_content label
+{
+	text-align:center;
+	margin-bottom:0.8em;
+}
+.inscription_content input[type="submit"]
+{
+	width:20%;
+	height:3em;
+	margin-top:3em;
+	border-radius: 2em;
+	font-family: 'Georgia';
+	font-size: 16px;
+}
+.inscription_content p
+{
+	text-align:center;
+	margin-top:-0.5em;
+}
+label .lower_italic
+{
+	font-size:0.8em;
+	font-style:italic;
+}
+input::placeholder
+{
+	font-style:italic;	
 }
