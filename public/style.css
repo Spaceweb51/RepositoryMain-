@@ -162,13 +162,13 @@ h1, h2, h3, h4
 	color:#195891;
 	transition:.3s;
 }
-.connection_link
+.connect_link
 {
 	display:flex;
 	margin:auto;
 	font-weight:bold;
 }
-.connection_link p
+.connect_link p
 {
 	margin:0;
 	margin-left:1em;

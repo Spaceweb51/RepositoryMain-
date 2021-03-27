@@ -1,5 +1,5 @@
 <footer class="footer_content">
 
-<p><a href="mentions-legales.php"> Mentions légales </a> | <a href="contact.php">Contact</a></p>
+<p><a href="../public/mentions_legales.php"> Mentions légales </a> | <a href="../public/contact.php">Contact</a></p>
 	
 </footer>
