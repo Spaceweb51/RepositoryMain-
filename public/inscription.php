@@ -1,5 +1,11 @@
 <?php
 session_start();
+	if(isset($_SESSION['username']))
+	{
+		header('Location: accueil.php');
+	}
+	else
+	{
 ?>
 	<!DOCTYPE html>
 		<html lang="fr">
@@ -67,3 +73,6 @@ session_start();
 				<?php include("../includes/footer.php"); ?>
 			</body>
 		</html>
+<?php
+	}
+?>	
