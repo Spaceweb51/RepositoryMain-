@@ -1,6 +1,6 @@
 <?php
 if(isset($_POST) AND !empty($_POST['username']) AND !empty($_POST['password']))
-{	//connect BDD
+{	//connect Db
 	try
 	{
 	$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');

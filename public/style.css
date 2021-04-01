@@ -98,7 +98,7 @@ h1, h2, h3, h4
 	color:#000;
 	transition: .5s;
 }
-.inscription_link a:hover, .user_name a:hover 
+.inscription_link a:hover,.user_name a:hover, 
 {
 	color: #195891;
 	transition: .3s;
@@ -213,13 +213,13 @@ h1, h2, h3, h4
 	color:#195891;
 	transition:.3s;
 }
-.connect_link
+.connect_link, .modifprofil_link 
 {
 	display:flex;
 	margin:auto;
 	font-weight:bold;
 }
-.connect_link p
+.connect_link p, .modifprofil_link p
 {
 	margin:0;
 	margin-left:1em;
@@ -260,7 +260,7 @@ legend
 	margin-bottom:0;
 	font-weight:bold;
 }
-.presentation_section p, .acteurs_txt > p
+.presentation_section p, .acteurs_txt p
 {
 	text-align: justify;
     text-justify: inter-word;
@@ -469,4 +469,36 @@ label .lower_italic
 input::placeholder
 {
 	font-style:italic;	
+}
+/* === PROFIL CONTENT === */
+
+.profil_section
+{
+	width:66%;
+	margin:auto;
+	background:#FFF;
+	/*box-shadow: inset 0px 0px 10px -5px #A3A3A3;*/
+	display:flex;
+	flex-direction:column;
+	padding:2% 5%;
+	border:solid black 1px;
+	border-radius:1em;
+}
+.profil_section h1
+{
+	margin-bottom:0;
+	font-weight:bold;
+}
+.profil_section p
+{
+	font-size:1.2em;
+}
+.user_profil_avatar img
+{
+	width:90px;
+	height:90%;
+}
+.user_profil_info
+{
+	padding-bottom: 30px;
 }

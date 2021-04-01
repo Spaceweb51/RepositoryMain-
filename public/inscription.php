@@ -56,10 +56,10 @@ session_start();
 								?>
 								<label for="pass2">Confirmation du mot de passe :</label><input type="password" name="pass2" id="pass2" required/>
 								<?php
-								if(isset($_SESSION['passnotmatching']))
+								if(isset($_SESSION['passnotmatch']))
 								{
 									    echo '<p style=color:red;>Les deux mots de passe saisis ne correspondent pas.</p>';
-									    unset($_SESSION['passnotmatching']);
+									    unset($_SESSION['passnotmatch']);
 								}					
 								?>
 								<label for="question">Question secrète <span class="lower_italic">(exemple : Quel est le nom de mon premier animal de compagnie ?)</span> :</label><input type="text" name="question" id="question" required/>

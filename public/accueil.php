@@ -1,6 +1,6 @@
-<!--<?php
-	//session_start();
-?>-->
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 	<head>
@@ -13,10 +13,10 @@
 	<body>
 	<?php include("../includes/header.php"); ?>
 		<div class="content accueil_content">
-		<!--<?php/*
-		if(isset($_SESSION['username']) AND !empty($_SESSION['username']))
-		{
-			*/?>-->
+			<?php
+			if(isset($_SESSION['username']) AND !empty($_SESSION['username']))
+			{
+			?>
 			<section class="presentation_section">
 				<h1>GBAF: Groupement Banque Assurance Français</h1>
 					<p>Le GBAF est une fédération représentant les 6 grands groupes Français : BNP Paribas, BPCE, Crédit Agricole, Crédit Mutuel-CIC, Société Générale, La Banque Postale.<br>Même s'il existe une forte concurrence entre ces entités, elles vont toutes travailler de la même façon pour gérer près de 80 milions de comptes sur le territoire national.<br>Le GBAF est le représentant de la profession Française. Sa mission est de promouvoir l'activité bancaire à l'échelle nationale. C'est aussi un interlocuteur privilégié des pouvoirs publics.</p>
@@ -85,13 +85,13 @@
 					<a class="acteurs_suite" href="nomacteurs.php">Lire la suite</a>
 				</div>
 			</section>		
-	<!--<?php/*
-		}
-		else
-		{
-			header('Location: connect.php');
-		}
-	*/?>-->
+		<?php
+			}
+			else
+			{
+				header('Location: connect.php');
+			}
+		?>
 		</div>
 		<?php include("../includes/footer.php"); ?>
 	</body>

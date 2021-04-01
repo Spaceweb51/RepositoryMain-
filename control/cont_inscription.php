@@ -4,7 +4,6 @@ if(isset($_POST) AND !empty($_POST['last_name'])
 				AND !empty($_POST['username'])
 				AND !empty($_POST['pass1'])
 				AND !empty($_POST['pass2'])
-				AND !empty($_POST['pass2'])
 				AND !empty($_POST['question'])
 				AND !empty($_POST['answer']))
 {
@@ -64,14 +63,14 @@ else
 	//if text fields are missing
 	$error[] = 'entrymissing';
 }
-	//return errors
+		//return errors
 if(isset($error))
 {
 	session_start();
 	foreach($error as $key => $value)
-	{
-		$_SESSION[$value] = true;
-	}
+		{
+			$_SESSION[$value] = true;
+		}
 	header('Location: ../public/inscription.php');
 }
 ?>
