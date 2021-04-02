@@ -34,7 +34,11 @@ session_start();
 								<div class="modifprofil_link"><a href="profil.php?page=idchange">Modifier son identifiant</a><p>  |  </p><a href="profil.php?page=mdpchange">Modifier son mot de passe</a>
 								</div>
 					</section>
-				</div>	
+				</div>
+				<?php 
+					if (isset($_GET["page"])){
+						if ($_GET["page"] == "idchange") {echo "changer username";}if ($_GET["page"] == "mdpchange") {echo "changer mot de passe";} 
+					}?>
 				<?php include("../includes/footer.php"); ?>
 			</body>
 <?php
