@@ -21,7 +21,7 @@
 					<fieldset>
 						<legend class="long_legend">Réinitialiser le mot de passe :</legend>
 
-						<label for="username">Veuillez saisir votre nom d'utilisateur :</label><input type="text" name="username" id="username"/ required>
+						<label for="username">Veuillez saisir votre nom d'utilisateur :</label><input type="text" name="username" id="username" required />
 						<?php
 						if(isset($_SESSION['noexist']))
 							{
@@ -40,7 +40,7 @@
 				<form class="connection_form" action="../control/cont_reinit.php" method="post">
 					<fieldset>
 						<legend class="long_legend">Réinitialiser le mot de passe :</legend>
-							<label for="answer">Bonjour<?php echo ' ' . $_SESSION['usernamemdpc'] . ', votre question secrète est : ' . $_SESSION['questionmdpc'] . ' ?'; ?> </label><input type="text" name="answer" id="answer" placeholder="<?php /*echo $_SESSION['answermdpc']; unset($_SESSION['novalidanswer']); */?>" />
+							<label for="answer">Bonjour<?php echo ' ' . $_SESSION['usernamemdpc'] . ', votre question secrète est : ' . $_SESSION['questionmdpc'] . ' ? Quelle est votre réponse ?'; ?> </label><input type="text" name="answer" id="answer" required />
 							<?php
 							if(isset($_SESSION['novalidanswer']))
 							{
@@ -49,7 +49,7 @@
 							}
 							?>		
 
-							<label for="pass1">Nouveau mot de passe <span class="lower_italic">(8 caractères, une majuscule, un chiffre et un caractère spécial au minimum)</span> :</label><input type="password" name="pass1" id="pass1"/>
+							<label for="pass1">Nouveau mot de passe <span class="lower_italic">(8 caractères, une majuscule, un chiffre et un caractère spécial au minimum)</span> :</label><input type="password" name="pass1" id="pass1" required />
 							<?php
 							if(isset($_SESSION['invalidpass']))
 							{
@@ -57,7 +57,7 @@
 							    unset($_SESSION['invalidpass']);
 							}
 							?>
-							<label for="pass2">Confirmation du mot de passe :</label><input type="password" name="pass2" id="pass2"/>
+							<label for="pass2">Confirmation du mot de passe :</label><input type="password" name="pass2" id="pass2" required />
 							<?php
 							if(isset($_SESSION['passnotmatch']))
 							{

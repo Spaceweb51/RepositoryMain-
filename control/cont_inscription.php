@@ -47,8 +47,8 @@ if(isset($_POST) AND !empty($_POST['last_name'])
 	if(!isset($error))
 	{
 		// no error = write the data in db
-	$pass=password_hash($_POST['pass1'],PASSWORD_DEFAULT);
-	$answer=password_hash($_POST['answer'],PASSWORD_DEFAULT);
+	$pass = password_hash($_POST['pass1'],PASSWORD_DEFAULT);
+	$answer = password_hash($_POST['answer'],PASSWORD_DEFAULT);
 	$query = $db->prepare('INSERT INTO main(nom, prenom, username, password, question, reponse) VALUES(:nom, :prenom, :username, :pass, :question, :answer)');
 	$query->execute(array('nom' => $_POST['last_name'], 'prenom' => $_POST['first_name'], 'username' => $_POST['username'], 'pass' => $pass, 'question' => $_POST['question'], 'answer' => $answer));
 	$query->closeCursor();

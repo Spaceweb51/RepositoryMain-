@@ -155,7 +155,8 @@ h1, h2, h3, h4
 	transition: .2s;
 }
 /* === ACCUEIL CONTENT + REINIT === */
-.accueil_content form, .reinit_content form{
+.accueil_content form, .reinit_content form
+{
 
 	width:66%;
 	margin:auto;
@@ -394,14 +395,14 @@ legend
 }
 
 /* === INSCRIPTION CONTENT === */
-.inscription_content form
+.inscription_content form, .profil_content form
 {
 	width:66%;
 	margin:auto;
 	margin-top:5%;
 	margin-bottom:5%;
 }
-.inscription_content fieldset
+.inscription_content fieldset, .profil_content fieldset
 {
 	width:90%;
 	height:90%;
@@ -414,7 +415,7 @@ legend
 	border-radius:1em;
 	box-shadow:0 0 10px black;
 }
-.inscription_content legend
+.inscription_content legend, .profil_content legend
 {
 	margin:auto;
 	font-size:2em;
@@ -423,31 +424,27 @@ legend
 	background:#FFF;
 	box-shadow:0 0 2px black;
 }
-/*legend
-{
-	border-radius:1em;
-}*/
-.inscription_content label
+.inscription_content label, .profil_content label
 {
 	width:70%;
 	margin:auto;
 }
-.inscription_content input
+.inscription_content input, .profil_content input 
 {
 	width:50%;
 	margin:auto;
 }
-.inscription_content input
+.inscription_content input, .profil_content input
 {
 	margin-bottom:1em;
 	height:2em;
 }
-.inscription_content label
+.inscription_content label, .profil_content label
 {
 	text-align:center;
 	margin-bottom:0.8em;
 }
-.inscription_content input[type="submit"]
+.inscription_content input[type="submit"], .profil_content input[type="submit"]
 {
 	width:20%;
 	height:3em;
@@ -456,7 +453,7 @@ legend
 	font-family: 'Georgia';
 	font-size: 16px;
 }
-.inscription_content p
+.inscription_content p, .profil_content p
 {
 	text-align:center;
 	margin-top:-0.5em;
@@ -472,33 +469,53 @@ input::placeholder
 }
 /* === PROFIL CONTENT === */
 
-.profil_section
+.profil_content HR
 {
-	width:66%;
-	margin:auto;
-	background:#FFF;
-	/*box-shadow: inset 0px 0px 10px -5px #A3A3A3;*/
+	margin:2em auto;
+
+}
+.actual_profil
+{
+	display:flex;
+	justify-content:space-around;
+	border: solid 1px black;
+	border-radius: 1em;
+	background: #f3f3f3;
+}
+.actual_profil_box1
+{
 	display:flex;
 	flex-direction:column;
-	padding:2% 5%;
-	border:solid black 1px;
-	border-radius:1em;
+	justify-content:start;
 }
-.profil_section h1
+.actual_profil_box1 p
 {
-	margin-bottom:0;
+	margin:auto;
+	margin-left:20px;
+}
+.actual_profil_box2 > div > img
+{
+	margin:auto;
+}
+hr
+{
+	height:1px;
+	width:80%;
+}
+.photo img
+{
+	height:50%;
+	width:50%;	
+}
+p .titre_modif
+{
+	font-size:1.5em;
 	font-weight:bold;
+	margin:auto;
 }
-.profil_section p
+p .titre2_modif
 {
-	font-size:1.2em;
-}
-.user_profil_avatar img
-{
-	width:90px;
-	height:90%;
-}
-.user_profil_info
-{
-	padding-bottom: 30px;
+	
+	font-weight:bold;
+	margin:auto;
 }

@@ -16,7 +16,7 @@
 				<div class="user_name">
 					<a href="profil.php" title="Voir mon profil"><p><?= $prenom . ' ' . $nom; ?></p></a>
 				</div>
-				<form class="deconnection_form" action="../public/deconnect.php" method="post"><input type="submit" value="deconnexion"/></form>				
+				<form class="deconnection_form" action="../control/cont_deconnect.php" method="post"><input type="submit" value="deconnexion"/></form>				
 			</div>
 	<?php
 		}
