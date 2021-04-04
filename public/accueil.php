@@ -32,58 +32,45 @@
 							</div>
 						</div>
 			</section>
-			<section class="acteurs_section">
-				<div class="acteurs_txt">
+			<section class="acteur_section">
+				<div class="acteur_txt">
 					<h2>Les acteurs et partenaires</h2>
 						<p>Vous trouverez ici un point d’entrée unique, répertoriant un grand nombre d’informations sur les partenaires et acteurs du groupe ainsi que sur les produits et services bancaires et financiers. Dans le but de mieux cerner les qualités et compétence de chacun, nous vous invitons à y laisser des commentaires et des apréciations constructives.</p>
 				</div>
-				<div class="acteurs">
-					<div class="acteurs_logo_desc">
-						<div class="acteurs_logo"><img src="logos/formation_co.png" alt="logo formation_co"></div>
-						<div class="acteurs_description">
-							<h3>formation&co</h3>
-							<P>Formation&co est une association française présente sur tout le territoire.</P>	
-							<p>Aller sur le site de <a class="acteurs_linkweb" href="#">formation&co</a></P>
-						</div>
-					</div>
-					<a class="acteurs_suite" href="nomacteurs.php">Lire la suite</a>
-				</div>
-
-				<div class="acteurs">
-					<div class="acteurs_logo_desc">
-						<div class="acteurs_logo"><img src="logos/protectpeople.png" alt="logo protectpeople"></div>
-						<div class="acteurs_description">
-							<h3>protectpeople</h3>
-							<P>Protectpeople finance la solidarité nationale. Nous appliquons le principe édifié par la Sécurité sociale française en 1945</p>	
-							<p>Aller sur le site de <a class="acteurs_linkweb" href="#">protectpeople</a></P>
-						</div>
-					</div>
-					<a class="acteurs_suite" href="nomacteurs.php">Lire la suite</a>
-				</div>
-
-				<div class="acteurs">
-					<div class="acteurs_logo_desc">
-						<div class="acteurs_logo"><img src="logos/dsa_france.png" alt="logo dsa_france"></div>
-						<div class="acteurs_description">
-							<h3>Dsa</h3>
-							<P>Dsa France accélère la croissance du territoire et s’engage avec les collectivités territoriales.</p>	
-							<p>Aller sur le site de <a class="acteurs_linkweb" href="#">Dsa France</a></P>
-						</div>
-					</div>
-					<a class="acteurs_suite" href="nomacteurs.php">Lire la suite</a>
-				</div>
-
-				<div class="acteurs">
-					<div class="acteurs_logo_desc">
-						<div class="acteurs_logo"><img src="logos/cde.png" alt="logo cde"></div>
-						<div class="acteurs_description">
-							<h3>CDE</h3>
-							<P>La CDE (Chambre Des Entrepreneurs) accompagne les entreprises dans leurs démarches de formation.</p> 
-							<p>Aller sur le site de <a class="acteurs_linkweb" href="#">La CDE</a></P>
-						</div>
-					</div>
-					<a class="acteurs_suite" href="nomacteurs.php">Lire la suite</a>
-				</div>
+					<?php // Récupération des infos et extraits de tous les partenaires
+						try
+						{
+							$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
+						}
+						catch (Exception $e)
+						{
+						    	die('Erreur : ' . $e->getMessage());
+						}
+						$result = $db->query('SELECT * FROM actor');
+						while($data = $result->fetch())
+						{
+							$description = htmlspecialchars($data['description']);
+							//strtok prend le premier segment de la description jusqu'au point (donc la 1ere phrase de la description) 
+							$phrase = strtok($description,".");
+					?>								
+							<div class="acteur">
+								<div class="acteur_logo_desc">
+								    <div class="acteur_logo"><img src="logos/<?= $data['logo']; ?>" alt="logo <?php echo $data['actor']; ?>"></div>
+								    	<div class="acteur_description_phrase">
+									    	<h3><?php echo $data['actor']; ?></h3>									    			
+									    	<p>
+									    	<?php
+									    	//affiche la premiere phrase de la description 
+									    	echo $phrase;
+									    	?> ... </p><a class="acteur_linkweb" href="#"><?php echo 'Aller sur le site de ' . $data['actor']?></a></p>
+									    </div>
+									</div>
+									<a class="acteur_suite" href="acteur.php?actorid=<?php echo $data['id_actor']; ?>">Lire la suite</a>
+							</div>
+					<?php
+						}
+						$result->closeCursor();
+					?>
 			</section>		
 		<?php
 			}

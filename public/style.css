@@ -267,7 +267,7 @@ legend
     text-justify: inter-word;
 	font-size:1.2em;
 }
-.acteurs_section
+.acteur_section
 {
 	background:#FFF;
 	box-shadow: inset 0px 0px 10px -5px #A3A3A3;
@@ -275,7 +275,7 @@ legend
 	padding: 2% 5%;
 	flex-direction:column;
 }
-.acteurs_txt
+.acteur_txt
 {
 	margin-bottom:1em;
 }
@@ -316,7 +316,7 @@ legend
 	max-width:90%;
 	max-height: 95%;
 }
-.acteurs
+.acteur
 {
 	margin:auto;
 	margin-bottom:2em;
@@ -329,49 +329,56 @@ legend
 	display:flex;
 	flex-direction:column;
 }
-.acteurs_logo_desc
+.acteur_logo_desc
 {
 	display:flex;
 }
-.acteurs_logo
+.acteur_logo
 {
 	max-width:33%;
 	height:auto;
 	margin:1% 2% 1% 1%;
 }
-.acteurs_logo img
+.acteur_logo img
 {
 	width:100%;
 	border-radius:2em;
 	box-shadow:0 0 10px black;
 }
-.acteurs_description
+.acteur_description, .acteurs_description_phrase
 {
 	margin-top:1%;
 }
-.acteurs_description p
+.acteur_description p
 {
 	margin-right:10%;
 	text-align:justify;
 	font-size:1.1em;
 }
-.acteurs h3
+.acteur_description_phrase p
 {
-	margin-top:0;
+	text-align:justify;
+	font-size:1.1em;
 }
-.acteurs_linkweb
+.acteur h3
+{
+	margin-top:20px;
+}
+.acteur_linkweb
 {
 	text-decoration:none;
 	color:black;
+	font-style: italic;  
 	font-weight:bold;
+	font-size: 0.8em;
 	transition: .5s;
 }
-.acteurs_linkweb:hover
+.acteur_linkweb:hover
 {
 	color:#195891;
 	transition: .3s;
 }
-.acteurs_suite
+.acteur_suite
 {
 	text-align:center;
 	align-self:flex-end;
@@ -387,7 +394,7 @@ legend
 	box-shadow:1px 1px 4px 1px grey;
 	transition:box-shadow .2s ease-in-out, background .5s ease-in-out;
 }
-.acteurs_suite:hover
+.acteur_suite:hover
 {
 	box-shadow: 0px 0px 2px 0px grey, inset 1px 1px 3px 0px grey;
 	background:rgb(255,255,255,0.9);
@@ -518,4 +525,41 @@ p .titre2_modif
 	
 	font-weight:bold;
 	margin:auto;
+}
+/* === ACTEUR CONTENT === */
+.acteur_content
+{
+	padding: 2% 5%;
+}
+.acteur_full
+{
+	margin:auto;
+	margin-top:2%;
+	padding:0;
+	width:100%;
+	border-radius:3em;
+	background:#DDD;
+	display:flex;
+	flex-direction:column;
+	margin-bottom:1em;
+}
+.acteur_full_logo
+{
+	text-align:center;
+	padding:2% 5%;
+}
+.acteur_full_logo img
+{
+	max-width:60%;
+	height:auto;
+	border-radius:1em;
+}
+.acteur_full_description
+{
+	padding:2% 5%;
+	padding-top:0;
+}
+.acteur_full_description p
+{
+	font-size:1.2em;
 }
