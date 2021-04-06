@@ -29,7 +29,7 @@ h1, h2, h3, h4
 	font-family: Montserrat;
 	text-transform:uppercase;
 }
-.content /* everything between header and footer */
+.content 
 {
 	min-height:80%;
 	background:#ffffff;
@@ -75,8 +75,8 @@ h1, h2, h3, h4
 {
 	height:100%;
 	width:auto;
-	border-radius:100%;
-	box-shadow:1px 1px 5px 1px black;
+	/*border-radius:100%;
+	box-shadow:1px 1px 5px 1px black;*/
 	transition: .4s;
 }
 .user_photo img:hover
@@ -237,7 +237,7 @@ h1, h2, h3, h4
 .accueil_content input[type="submit"], .reinit_content input[type="submit"]
 {
 	width:20%;
-	height:3em;
+	/*height:3em;*/
 	margin-top:3em;
 	margin-bottom:3em;
 	border-radius:2em;
@@ -324,8 +324,6 @@ legend
 	width:100%;
 	border: 1px solid black;
 	border-radius:.5em;
-	/*box-shadow:0 0 10px black;*/
-	background:#fffff;
 	display:flex;
 	flex-direction:column;
 }
@@ -454,8 +452,8 @@ legend
 .inscription_content input[type="submit"], .profil_content input[type="submit"]
 {
 	width:20%;
-	height:3em;
-	margin-top:3em;
+	/*height:3em;*/
+	/*margin-top:3em;*/
 	border-radius: 2em;
 	font-family: 'Georgia';
 	font-size: 16px;
@@ -488,6 +486,8 @@ input::placeholder
 	border: solid 1px black;
 	border-radius: 1em;
 	background: #f3f3f3;
+	padding-top: 10px;
+	padding-bottom: 5px;	
 }
 .actual_profil_box1
 {
@@ -498,7 +498,7 @@ input::placeholder
 .actual_profil_box1 p
 {
 	margin:auto;
-	margin-left:20px;
+	margin-left:20px;	
 }
 .actual_profil_box2 > div > img
 {
@@ -511,8 +511,7 @@ hr
 }
 .photo img
 {
-	height:50%;
-	width:50%;	
+	width:80%;	
 }
 p .titre_modif
 {
@@ -537,22 +536,23 @@ p .titre2_modif
 	margin-top:2%;
 	padding:0;
 	width:100%;
-	border-radius:3em;
-	background:#DDD;
+	border: 1px solid black;
+	border-radius:.5em;
 	display:flex;
 	flex-direction:column;
 	margin-bottom:1em;
 }
 .acteur_full_logo
 {
-	text-align:center;
+	/*text-align:center;*/
 	padding:2% 5%;
 }
 .acteur_full_logo img
 {
 	max-width:60%;
 	height:auto;
-	border-radius:1em;
+	border-radius:2em;
+	box-shadow:0 0 10px black;
 }
 .acteur_full_description
 {
@@ -562,4 +562,167 @@ p .titre2_modif
 .acteur_full_description p
 {
 	font-size:1.2em;
+}
+.acteur_like_com
+{
+	max-width:94%;
+	/*margin-right:3%;*/
+	font-size: 1em;
+	display:flex;
+	/*justify-content:flex-start;*/
+	flex-wrap:wrap;
+	/*margin-left:auto;*/
+	margin-right: auto;
+	align-items:center;
+	margin-bottom:2em;
+}
+.case_commented, .acteur_like_com > a, .acteur_like
+{
+	/*margin-left:.5em;*/
+	margin-right:.5em;
+	margin-bottom:.5em;
+	display:inline-block;
+	/*background:#DDD;*/
+	/*height:1.1em;*/
+	border:1px solid black;
+	border-radius:1em;
+	padding:1em;
+}
+.case_commented_sub p
+{
+	margin:auto;
+}
+p.separateur
+{
+	margin:auto;
+	margin-right:.5em;
+	margin-left:.5em;
+}
+.acteur_like
+{
+	justify-content:center;
+	align-items:center;
+}
+.acteur_like_com a
+{
+	text-decoration:none;
+	color:black;
+	transition:.5s;
+	font-weight:bold;
+}
+.acteur_like_com a:hover
+{
+	color:#195891;
+	transition:.5s;
+}
+.acteur_like_com p
+{
+	font-style:italic;
+}
+.acteur_like
+{
+	display:inline-block;
+	margin-bottom:0.5em;
+	padding:1em;
+}
+.acteur_like a
+{
+	display:flex;
+	flex-direction:row;
+}
+.acteur_like_sub, .case_commented_sub
+{
+	display:flex;
+}
+.acteur_like_sub p
+{
+	margin:auto;
+	margin-right:.5em;
+	margin-left:.5em;
+}
+.like_button, .dislike_button
+{
+	margin-left:.5em;
+	display:inline-block;
+	max-height:1.1em;
+	width:auto;
+	transition:ease-in-out;
+}
+.like_button:hover, .dislike_button:hover
+{
+	animation-name: move;
+	animation-duration: 1s;
+	transition:ease-in-out;
+}
+@keyframes move
+{ 
+    33% { transform: rotate(-5deg) ; }  
+    66% { transform: rotate(10deg) ; }
+    100% { transform: rotate(-5deg) ; }  
+}
+h4
+{
+	margin-top:0;
+	/*font-size:1.5em;*/
+	margin-left:3%;
+}
+.post
+{
+	border-radius:7px;
+	/*background:#DDD;*/
+	border:solid black 1px;
+	padding:1em;
+	padding-top:.5em;
+	margin-top:1em;
+	width:80%;
+	margin-right:auto;
+	margin-left:3%;
+}
+.post_section p
+{
+	margin:.5em;
+}
+.user_postref
+{
+	font-size:1em;
+	font-weight:600;
+}
+.post_photo img
+{
+	max-height:60px;
+	width:auto;
+	border-radius:100%;
+	float:right;
+	position:relative;
+	top:0px;
+} 
+.add_comment
+{
+	display:flex;
+	flex-direction:column;
+	width:50%;
+	margin:auto;
+	padding:1em;
+}
+.add_comment label
+{
+	margin:1em;
+}
+.add_comment textarea
+{
+	margin:1em;
+	resize:vertical;
+	max-height:500px;
+	min-height:200px;
+	border-radius: 1em;
+}
+.add_comment input[type="submit"]
+{
+	margin:auto;
+	width:20%;
+	/*height:3em;*/
+	/*margin-top:3em;*/
+	border-radius: 1em;
+	font-family: 'Georgia';
+	font-size: 16px;
 }

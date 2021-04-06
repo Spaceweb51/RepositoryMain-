@@ -29,7 +29,7 @@ session_start();
 									</div>
 									<div class="actual_profil_box2">
 										<div class="photo">
-										<img src="logos/profil.jpg" alt="Avatar"/>
+										<img src="logos/profil.png" alt="Avatar"/>
 										</div>								
 									</div>
 								</div>

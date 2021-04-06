@@ -42,18 +42,150 @@
 			    	</div>
 			    	<div class="acteur_full_description">
 				    	<h3><?php echo $data['actor']; ?></h3>
-				    	<p><?php echo ($data['description']); ?></p>
+				    	<p><?php echo nl2br($data['description']); ?></p><!--n12br Insère un retour à la ligne HTML à chaque nouvelle ligne pour mettre en forme la description de l'acteur-->
 				    	<p><a class="acteur_linkweb" href="#"><?php echo "Aller sur le site de " . $data['actor']?></a></p>			    		
 				    </div>
 				</section>
-					
-			<?php		
-			}	
+				<div class="acteur_like_com">
+				    	<?php // On vérifie si l'utilisateur a déjà posté un commentaire pour cet acteur
+		    				$result = $db->prepare('SELECT main.id_user, post.id_actor
+													FROM main
+													INNER JOIN post
+													ON main.id_user = post.id_user
+													WHERE username = :username
+													AND id_actor = :actor');
+							$result->execute(array('username' => $username, 'actor' => $actor));
+							$data = $result->fetch();
+							if(!$data)// pas de données -> pas encore de commentaire de l'utilisateur pour cet acteur -> on propose l'ajout de commentaire
+							{ 
+								?>
+									<a href="acteur.php?actorid=<?php echo $actor; ?>&amp;add=1#new_post">Ajouter un commentaire</a>
+								<?php
+							}
+							else // cet utilisateur a déjà commenté cet acteur -> info + lien pour supprimer ou modifier le commentaire existant
+							{
+								?>
+									<div class="case_commented">
+										<div class="case_commented_sub">
+											<p>Vous avez commenté ce partenaire</p>
+											<p class="separateur"> | </p>
+											<a href="../control/cont_commentaire.php?actorid=<?php echo $actor; ?>&amp;delete=1">Supprimer votre commentaire</a>
+											<p class="separateur"> | </p>
+											<a href="acteur.php?actorid=<?php echo $actor; ?>&amp;mod=1#mod_post"> Modifier votre commentaire</a>
+										</div>
+									</div>
+								<?php
+							}
+
+						?>
+							<div class="acteur_like">
+				    			<div class="acteur_like_sub">
+				    				<a href="#"	title="like">Likes<img src="logos/like.png" class="like_button" alt="like_button"/></a>
+				    				<p class="separateur"> | </p>
+				    				<a href="#"	title="dislike">Dislikes<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
+				    			</div>
+				    		</div>	
+				    </div>
+				 <section class="post_section">
+				 	<h4>Commentaires :</h4>
+				 	<?php // Affichage des avertissement et erreurs
+				 	if(isset($_SESSION['posted']))
+					{
+						    echo '<p style=color:red;>Votre commentaire a bien été ajouté.</p>';
+						    unset($_SESSION['posted']);
+					}
+					if(isset($_SESSION['deleted_post']))
+					{
+						    echo '<p style=color:red;>Votre commentaire a bien été supprimé.</p>';
+						    unset($_SESSION['deleted_post']);
+					}
+					if(isset($_SESSION['modified_post']))
+					{
+						    echo '<p style=color:red;>Votre commentaire a bien été modifié.</p>';
+						    unset($_SESSION['modified_post']);
+					}
+					if(isset($_SESSION['existing_post']))
+					{
+						    echo '<p style=color:red;>Vous avez déjà commenté cet acteur, pour commenter à nouveau, supprimez votre précédent commentaire.</p>';
+						    unset($_SESSION['existing_post']);
+					}				
+					if(isset($_SESSION['invalid_post']))
+					{
+						    echo '<p style=color:red;>Le commentaire saisi est invalide.</p>';
+						    unset($_SESSION['invalid_post']);
+					}									
+				 	//on verifie l'existence de commentaire pour cet acteur
+				 	$result = $db->prepare('SELECT id_actor FROM post WHERE id_actor = :actor');
+					$result->execute(array('actor' => $actor));
+					$data = $result->fetch();
+					$result->closeCursor();
+					if(!$data)
+					{
+						?>
+						<p> Pas encore de commentaire publié pour ce partenaire.</p>
+						<?php
+					}
+					else//affichage des commentaires si il y en a
+					{
+					$result = $db->prepare('SELECT main.id_user, nom, prenom, post.id_user, id_actor, datepost, post 
+											FROM post
+											INNER JOIN main
+											ON main.id_user = post.id_user
+											WHERE id_actor = :actor
+											ORDER BY datepost DESC');
+					$result->execute(array('actor' => $actor));
+					while($data = $result->fetch())
+					{
+						$nom = htmlspecialchars($data['nom']);
+						$prenom = htmlspecialchars($data['prenom']);
+						$date = preg_replace("#([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2})#","Le $3/$2/$1",$data['datepost']);
+						$post = htmlspecialchars($data['post']);
+						?>
+				 			<div class="post">
+				 				<div class="post_photo"><img src="logos/profil.png" alt="avatar"/></div>
+				 				<p class="user_postref"><?php echo $date . " " . $prenom . " " . $nom . " a commenté :" ?></p>
+				 				<p><?php echo nl2br($post); ?></p>
+				 			</div>
+			<?php
+				 	}		
+				 	$result->closeCursor();
+				 }
+			}
+			?>	 	
+				</section>
+				<?php
+				if(isset($_GET['add']) AND $_GET['add'] == 1)
+				{
+				?>	
+					<form class="add_comment" action="../control/cont_commentaire.php?actorid=<?php echo $actor; ?>" method="post">
+						<label for="new_post">Saisir votre commentaire : </label><textarea name="new_post" id="new_post"></textarea>
+						<input type="submit" name="new_post_submit" value="Publier"/>
+					</form>	
+				<?php		
+				}
+				if(isset($_GET['mod']) AND $_GET['mod'] == 1)
+				{
+					$result = $db->prepare('SELECT main.id_user, post.id_user, id_actor, post 
+											FROM post
+											INNER JOIN main
+											ON main.id_user = post.id_user
+											WHERE id_actor = :actor
+											ORDER BY datepost DESC');
+					$result->execute(array('actor' => $actor));
+					$data = $result->fetch();
+					$post = htmlspecialchars($data['post']);
+				?>	
+					<form class="add_comment" action="../control/cont_commentaire.php?actorid=<?php echo $actor; ?>" method="post">
+						<label for="mod_post">Modifier votre commentaire : </label><textarea name="mod_post" id="mod_post"><?php echo nl2br($post); ?></textarea>
+						<input type="submit" name="modif_post_submit" value="Publier"/>
+					</form>	
+				<?php		
+				}	
 		}
 		else
 		{
 			// utilisateur non connecté renvoyé page accueil (connexion)
-			header('Location: connexion.php');
+			header('Location: connect.php');
 		}
 		?>
 	</div>

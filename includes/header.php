@@ -11,7 +11,7 @@
 	?>
 			<div class="user_ref">
 				<div class="user_photo">
-					<a href="profil.php"><img src="logos/profil.jpg" alt="profil" title="Voir mon profil"/></a>
+					<a href="profil.php"><img src="logos/profil.png" alt="profil" title="Voir mon profil"/></a>
 				</div>
 				<div class="user_name">
 					<a href="profil.php" title="Voir mon profil"><p><?= $prenom . ' ' . $nom; ?></p></a>
