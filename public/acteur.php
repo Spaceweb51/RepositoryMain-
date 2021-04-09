@@ -17,7 +17,7 @@
 		if(isset($_GET['actorid']) AND isset($_SESSION['username'])) // si connecté et si on a l'id de l'acteur
 		{
 			$username = htmlspecialchars($_SESSION['username']);
-			$actor = htmlspecialchars($_GET['actorid']);
+			$actorid = htmlspecialchars($_GET['actorid']);
 			try
 			{
 			$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
@@ -26,8 +26,8 @@
 			{
 			    die('Erreur : ' . $e->getMessage());
 			}
-			$result = $db->prepare('SELECT * FROM actor WHERE id_actor = :actor');
-			$result->execute(array('actor' => $actor));
+			$result = $db->prepare('SELECT * FROM actor WHERE id_actor = :actorid');
+			$result->execute(array('actorid' => $actorid));
 			$data = $result->fetch();
 			$result->closeCursor();
 			if(!$data)// Si l'id_actor ne renvoie pas à un acteur existant, retour à l'accueil
@@ -53,13 +53,13 @@
 													INNER JOIN post
 													ON main.id_user = post.id_user
 													WHERE username = :username
-													AND id_actor = :actor');
-							$result->execute(array('username' => $username, 'actor' => $actor));
+													AND id_actor = :actorid');
+							$result->execute(array('username' => $username, 'actorid' => $actorid));
 							$data = $result->fetch();
 							if(!$data)// pas de données -> pas encore de commentaire de l'utilisateur pour cet acteur -> on propose l'ajout de commentaire
 							{ 
 								?>
-									<a href="acteur.php?actorid=<?php echo $actor; ?>&amp;add=1#new_post">Ajouter un commentaire</a>
+									<a href="acteur.php?actorid=<?php echo $actorid; ?>&amp;add=1#new_post">Ajouter un commentaire</a>
 								<?php
 							}
 							else // cet utilisateur a déjà commenté cet acteur -> info + lien pour supprimer ou modifier le commentaire existant
@@ -69,20 +69,63 @@
 										<div class="case_commented_sub">
 											<p>Vous avez commenté ce partenaire</p>
 											<p class="separateur"> | </p>
-											<a href="../control/cont_commentaire.php?actorid=<?php echo $actor; ?>&amp;delete=1">Supprimer votre commentaire</a>
+											<a href="../control/cont_commentaire.php?actorid=<?php echo $actorid; ?>&amp;delete=1">Supprimer votre commentaire</a>
 											<p class="separateur"> | </p>
-											<a href="acteur.php?actorid=<?php echo $actor; ?>&amp;mod=1#mod_post"> Modifier votre commentaire</a>
+											<a href="acteur.php?actorid=<?php echo $actorid; ?>&amp;mod=1#mod_post"> Modifier votre commentaire</a>
 										</div>
 									</div>
-								<?php
+							<?php
 							}
+							// Recuperation du nombre de likes 
+                            $result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND rates = 1');
+                            $result->execute(array('actorid' => $_GET['actorid']));
+                            $likes_number = $result->rowCount();
 
-						?>
+                            // Recuperation du nombre de dislikes 
+                            $result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND rates = 2');
+                            $result->execute(array('actorid' => $_GET['actorid']));
+                            $dislikes_number = $result->rowCount();	
+
+							//recuperation des valeurs like/dislike
+							$result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND id_user = :username AND rates = 1');
+							$result->execute(array('actorid' => $_GET['actorid'],'username' => $_SESSION['username']));
+							$likes = $result->fetch();
+
+							$result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND id_user = :username AND rates = 2');
+							$result->execute(array('actorid' => $_GET['actorid'],'username' => $_SESSION['username']));
+							$dislikes = $result->fetch();
+							?>
 							<div class="acteur_like">
-				    			<div class="acteur_like_sub">
-				    				<a href="#"	title="like">Likes<img src="logos/like.png" class="like_button" alt="like_button"/></a>
-				    				<p class="separateur"> | </p>
-				    				<a href="#"	title="dislike">Dislikes<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
+								<div class="acteur_like_sub">
+									<?php
+									if($likes)
+									{
+									?>	
+					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=1" title="like">( <?php echo $likes_number; ?> ) Likes<img src="logos/like_blue.png" class="like_button" alt="like_button"/></a>
+					    			<?php
+					    			}
+					    			else
+					    			{
+					    			?>	
+					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=1" title="like">( <?php echo $likes_number; ?> ) Likes <img src="logos/like.png" class="like_button" alt="like_button"/></a>
+					    			<?php
+					    			}
+					    			?>	
+					    				<p class="separateur"> | </p>
+					    			<?php		
+					    			if($dislikes)
+	                                {
+	                                ?>		
+					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=2"	title="dislike">( <?php echo $dislikes_number; ?> ) Dislikes<img src="logos/dislike_red.png" class="dislike_button" alt="dislike_button"/></a>
+					    			<?php
+					    			}
+					    			else
+					    			{
+					    			?>
+					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=2"	title="dislike">( <?php echo $dislikes_number; ?> ) Dislikes<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
+					    			<?php
+					    			}
+					    			?>
 				    			</div>
 				    		</div>	
 				    </div>
@@ -115,8 +158,8 @@
 						    unset($_SESSION['invalid_post']);
 					}									
 				 	//on verifie l'existence de commentaire pour cet acteur
-				 	$result = $db->prepare('SELECT id_actor FROM post WHERE id_actor = :actor');
-					$result->execute(array('actor' => $actor));
+				 	$result = $db->prepare('SELECT id_actor FROM post WHERE id_actor = :actorid');
+					$result->execute(array('actorid' => $actorid));
 					$data = $result->fetch();
 					$result->closeCursor();
 					if(!$data)
@@ -131,9 +174,9 @@
 											FROM post
 											INNER JOIN main
 											ON main.id_user = post.id_user
-											WHERE id_actor = :actor
+											WHERE id_actor = :actorid
 											ORDER BY datepost DESC');
-					$result->execute(array('actor' => $actor));
+					$result->execute(array('actorid' => $actorid));
 					while($data = $result->fetch())
 					{
 						$nom = htmlspecialchars($data['nom']);
@@ -157,7 +200,7 @@
 				if(isset($_GET['add']) AND $_GET['add'] == 1)
 				{
 				?>	
-					<form class="add_comment" action="../control/cont_commentaire.php?actorid=<?php echo $actor; ?>" method="post">
+					<form class="add_comment" action="../control/cont_commentaire.php?actorid=<?php echo $actorid; ?>" method="post">
 						<label for="new_post">Saisir votre commentaire : </label><textarea name="new_post" id="new_post"></textarea>
 						<input type="submit" name="new_post_submit" value="Publier"/>
 					</form>	
@@ -169,13 +212,13 @@
 											FROM post
 											INNER JOIN main
 											ON main.id_user = post.id_user
-											WHERE id_actor = :actor
+											WHERE id_actor = :actorid
 											ORDER BY datepost DESC');
-					$result->execute(array('actor' => $actor));
+					$result->execute(array('actorid' => $actorid));
 					$data = $result->fetch();
 					$post = htmlspecialchars($data['post']);
 				?>	
-					<form class="add_comment" action="../control/cont_commentaire.php?actorid=<?php echo $actor; ?>" method="post">
+					<form class="add_comment" action="../control/cont_commentaire.php?actorid=<?php echo $actorid; ?>" method="post">
 						<label for="mod_post">Modifier votre commentaire : </label><textarea name="mod_post" id="mod_post"><?php echo nl2br($post); ?></textarea>
 						<input type="submit" name="modif_post_submit" value="Publier"/>
 					</form>	
