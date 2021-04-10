@@ -5,6 +5,7 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
 		<link rel="stylesheet" href="style.css" />
 		<link rel="icon" type="image/png" href="logos/gbaf_ico.png" />
 		<title>Contact</title>

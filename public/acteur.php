@@ -84,15 +84,22 @@
                             // Recuperation du nombre de dislikes 
                             $result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND rates = 2');
                             $result->execute(array('actorid' => $_GET['actorid']));
-                            $dislikes_number = $result->rowCount();	
+                            $dislikes_number = $result->rowCount();
+
+                            //on va chercher l'id_user du username
+							$result = $db->prepare('SELECT id_user FROM main WHERE username = :username');
+							$result->execute(array('username' => $username));
+							$data = $result->fetch();
+							$result->closeCursor();
+							$id_user = htmlspecialchars($data['id_user']);	
 
 							//recuperation des valeurs like/dislike
-							$result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND id_user = :username AND rates = 1');
-							$result->execute(array('actorid' => $_GET['actorid'],'username' => $_SESSION['username']));
+							$result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND id_user = :id_user AND rates = 1');
+							$result->execute(array('actorid' => $actorid,'id_user' => $id_user));
 							$likes = $result->fetch();
 
-							$result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND id_user = :username AND rates = 2');
-							$result->execute(array('actorid' => $_GET['actorid'],'username' => $_SESSION['username']));
+							$result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND id_user = :id_user AND rates = 2');
+							$result->execute(array('actorid' => $actorid,'id_user' => $id_user));
 							$dislikes = $result->fetch();
 							?>
 							<div class="acteur_like">
@@ -100,7 +107,8 @@
 									<?php
 									if($likes)
 									{
-									?>	
+									?>
+										Je recommande<p class="separateur"> | </p>  
 					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=1" title="like">( <?php echo $likes_number; ?> ) Likes<img src="logos/like_blue.png" class="like_button" alt="like_button"/></a>
 					    			<?php
 					    			}
@@ -115,8 +123,9 @@
 					    			<?php		
 					    			if($dislikes)
 	                                {
-	                                ?>		
-					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=2"	title="dislike">( <?php echo $dislikes_number; ?> ) Dislikes<img src="logos/dislike_red.png" class="dislike_button" alt="dislike_button"/></a>
+	                                ?>
+	                                	<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=2"	title="dislike">( <?php echo $dislikes_number; ?> ) Dislikes<img src="logos/dislike_red.png" class="dislike_button" alt="dislike_button"/></a>
+					    				<p class="separateur"> | </p>Je déconseille	
 					    			<?php
 					    			}
 					    			else

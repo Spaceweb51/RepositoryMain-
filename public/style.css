@@ -278,6 +278,7 @@ legend
 .acteur_txt
 {
 	margin-bottom:1em;
+	text-align: justify;
 }
 .illustration
 {
@@ -726,3 +727,472 @@ h4
 	font-family: 'Georgia';
 	font-size: 16px;
 }
+/* === CONTACT CONTENT === */
+
+/* === MENTIONS LEGALES CONTENT === */
+
+/* === QUERIES TABLET (769px-900px) ====*/
+@media all and (max-width: 900px)
+{
+	html
+	{
+		font-size:20px;
+	}
+	.user_ref
+	{
+		font-size:16px;
+	}
+	h1
+	{
+		font-size:26px;
+	}
+	h2
+	{
+		font-size:24px;
+	}
+	h3
+	{
+		font-size:20px;
+	}
+	h4
+	{
+		font-size:22px;
+	}
+	.accueil_content form, .inscription_content form 
+	{
+		width:90%;
+		margin-top:auto;
+	}
+	.profil_content form
+	{
+		width:90%;
+		margin-top:2%;
+	}
+	.inscription_content form
+	{
+		margin-top:2%;
+	}
+	.inscription_content legend, .profil_content legend, .accueil_content legend
+	{
+		font-size:1.4em;
+	}
+	.accueil_content legend
+	{
+		font-size:1.6em;
+	}
+	.accueil_content .long_legend
+	{
+		font-size:1.3em;
+	}
+	.inscription_content input, .accueil_content input
+	{
+		width:60%;
+	}
+	.profil_content fieldset
+	{
+		font-size:16px;
+	}
+	.connect_link, .inscription_link
+	{
+		font-size:.8em;
+	}
+	.presentation_section p
+	{
+		font-size: 1em
+	}
+	.presentation_section p, .acteur_txt p
+	{
+		padding-left:3%;
+		padding-right:3%;
+	}
+	.acteur_logo
+	{
+		min-width:30%;	
+		height:auto;
+		margin:3% 4% 3% 3%;
+	}
+	.acteur
+	{
+		font-size:.8em;
+	}
+	.acteur_description_phrase
+	{
+		padding-right:3%;
+	}
+	.acteur_full_description p
+	{
+		font-size:1em;
+		text-align:justify;
+	}
+	.acteur_like_com
+	{
+		flex-direction:column;
+		align-items:flex-start;
+		font-size:16px;
+	}
+	.acteur_linkweb 
+	{
+		font-size: 1em
+	}
+	.acteur_linkweb a
+	{
+		font-size: 1.2em
+	}
+	.user_postref
+	{
+		font-size:16px;
+	}
+	.inscription_link a
+	{
+		font-size: 1.2em;
+	}
+	.footer_content p
+	{
+	margin:auto;
+	color:black;
+	font-size:1em;
+	}
+}
+
+/* === QUERIES PHONE (481px-768px) ====*/
+@media screen and (max-width: 768px)
+{
+	html
+	{
+		font-size:18px;
+	}
+	.user_ref
+	{
+		font-size:14px;
+	}
+	h1
+	{
+		font-size:24px;
+	}
+	h2
+	{
+		font-size:22px;
+	}
+	h3
+	{
+		font-size:18px;
+	}
+	h4
+	{
+		font-size:20px;
+	}
+	/*.inscription_link
+	{
+		justify-content:center;
+		margin:auto;
+	}*/
+	/*.acteur_full
+	{
+		border-radius:1em;
+	}*/
+	.presentation_section p, .acteur_txt p
+	{
+		padding-left:3%;
+		padding-right:3%;
+		font-size: 1.2em
+	}
+	.acteur_logo
+	{
+		max-width:25%;
+		height:auto;
+		margin:2% 3% 2% 2%;
+	}
+	.acteur_logo img
+	{
+		width:100%;
+		border-radius:1em;
+	}
+	.acteur
+	{
+		font-size:.8em;
+	}
+	.acteur_description_phrase
+	{
+		font-size:1.2em;
+	}
+	.acteur_linkweb
+	{
+		font-size: 1em
+	}
+	.acteur_linkweb a
+	{
+		font-size: 0.9em
+	}
+	.acteur_full_description p
+	{
+		font-size:1.2em;
+	}
+	.acteur_like_com
+	{
+		flex-direction:column;
+		align-items:flex-start;
+		font-size:14px;
+	}
+	.acteur_like_sub
+	{
+		font-size: 1.2em;
+	}
+	.case_commented_sub
+	{
+		font-size: 1.2em;
+	}
+	.case_commented, .acteur_like
+	{
+		justify-content:center;
+		width: 100%;
+	}	
+	.acteur_linkweb
+	{
+		font-size: 0.9em;
+	}
+	.inscription_content input, .accueil_content input
+	{
+		width:75%;
+	}
+	.inscription_link
+	{
+		font-size: 1em;
+	}
+	.footer_content p a
+	{
+		font-size: 1.2em;
+	}
+	.post
+	{
+		margin:auto;
+		margin-bottom:.5em;
+		width:90%;
+		font-size:16px;
+	}
+	.post_photo img
+	{
+		width: 50px;
+		height: 50px;
+	}	
+	.illustration
+	{
+		height:0;
+		min-height:200px;
+	}
+	.illustration_logos
+	{
+		margin:auto;
+		flex-wrap:wrap;
+		padding:3%;
+	}
+	.illustration_logos a
+	{
+		max-height:80px;
+		max-width:25%;
+		margin:auto;
+	}
+	.illustration_logos a:nth-child(1) img
+	{
+		max-width:60%
+	}
+	.profil_content form
+	{
+		font-size:14px;
+		width:97%;
+	}
+	.profil_content fieldset
+	{
+		width:90%;
+	}
+	.profil_content input[type="text"], .profil_content input[type="password"]
+	{
+		max-width:75%;
+	}
+	.profil_content .actual_profile img
+	{
+		width:100px;
+		height:100px;
+	}
+	.profil_content fieldset > input[type="submit"]
+	{
+		height:2em;
+		/*width:25%;*/
+	} 
+	.user_ref
+	{
+		font-size: 1.2em;
+	}
+
+}
+/* === QUERIES PHONE (< 480px) ====*/
+@media screen and (max-width: 480px)
+{
+	html
+	{
+		font-size:18px;
+	}
+	.user_ref
+	{
+		font-size:14px;
+	}
+	h1
+	{
+		font-size:24px;
+	}
+	h2
+	{
+		font-size:22px;
+	}
+	h3
+	{
+		font-size:18px;
+	}
+	h4
+	{
+		font-size:20px;
+	}
+	.header_content
+	{
+		height:20%;
+		flex-direction:column;
+	}
+	.logo_gbaf
+	{
+		height:60%;
+		margin:auto;
+	}
+	.user_ref
+	{
+		padding:0;
+		height:40%;
+		justify-content:center;
+		margin:auto;
+		font-size: 1.1em
+	}
+	.inscription_link
+	{
+		padding:0;
+		height:40%;
+		justify-content:center;
+		margin:auto;
+		font-size: 0.8em
+	}
+	.user_photo
+	{
+		max-height:60%;
+		width:auto;
+		margin:0;
+	}
+	.user_photo a
+	{
+		display:block;
+		height:100%;
+	}
+	.acteur_logo_desc
+	{
+		display:flex;
+		flex-direction:column;
+		padding:10px;
+	}
+	.acteur a
+	{
+		margin-right:1em;
+		margin-bottom:1em;
+		font-size:1em;
+	}
+	/*.acteur_content
+	{
+		width: 90%;
+	}
+	.acteur_full
+	{
+		border-radius:1em;
+	}*/
+	.acteur_like_com
+	{
+		margin-right:0;
+	}
+	.case_commented, .acteur_like
+	{
+		/*height:3em;*/
+		justify-content:center;
+		width: 100%;
+	}
+	.acteur_like_sub
+	{
+		font-size: 1.2em;
+	}
+	.footer_content 
+	{
+		font-size: 0.9em;
+	}
+	/*.presentation_section p, .actors_txt p
+	{
+		padding-left:3%;
+		padding-right:3%;
+	}*/
+	.illustration
+	{
+		min-height:150px;
+	}
+	.acteur_logo
+	{
+		min-width:90%;	
+		margin:auto;
+		margin-top:.5em;
+		margin-bottom:.5em;
+		height:auto;
+	}
+	.acteur
+	{
+		font-size:0.7em;
+	}
+	.acteur_description_phrase
+	{
+		padding:1em;
+	}
+	.acteur_description_phrase p
+	{
+		/*margin:auto;*/
+		font-size:1.2em;
+	}
+	.acteur_linkweb
+	{
+		font-size:1em!important;
+	}
+	.acteur a
+	{
+		font-size: 1.2em;
+	}
+	.acteur_full_description p
+	{
+		font-size:1.1em;
+	}
+	.post
+	{
+		width:90%;
+		font-size:16px;
+	}
+	.post_photo img
+	{
+		width: 40px;
+		height: 40px;
+	}
+	.profil_content .actual_profil img
+	{
+		width:60px;
+		height:60px;
+	}
+	.profil_form input[type="text"], .profil_form input[type="password"]
+	{
+		width:90%;
+	}
+	.accueil_content input[type="submit"]
+	{
+		width: 100px;
+	}
+	.accueil_content .long_legend
+	{
+		font-size: 1.2em;
+	}
+}	
