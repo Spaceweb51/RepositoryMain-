@@ -278,6 +278,9 @@ legend
 .acteur_txt
 {
 	margin-bottom:1em;
+}
+.acteur_txt p
+{
 	text-align: justify;
 }
 .illustration
@@ -545,7 +548,7 @@ p .titre2_modif
 }
 .acteur_full_logo
 {
-	/*text-align:center;*/
+	text-align:center;
 	padding:2% 5%;
 }
 .acteur_full_logo img
@@ -728,8 +731,16 @@ h4
 	font-size: 16px;
 }
 /* === CONTACT CONTENT === */
+.contact_content
+{
+	text-align: center;
+}
 
 /* === MENTIONS LEGALES CONTENT === */
+.mentions_legales_content
+{
+	text-align: center;
+}
 
 /* === QUERIES TABLET (769px-900px) ====*/
 @media all and (max-width: 900px)
@@ -1022,7 +1033,14 @@ h4
 	{
 		font-size: 1.2em;
 	}
-
+	.accueil_content input[type="submit"] 
+	{
+    width: 30%;
+	}
+	.add_comment input[type="submit"]
+	{
+    width: 40%;
+	}
 }
 /* === QUERIES PHONE (< 480px) ====*/
 @media screen and (max-width: 480px)
@@ -1033,7 +1051,7 @@ h4
 	}
 	.user_ref
 	{
-		font-size:14px;
+		/*font-size:14px;*/
 	}
 	h1
 	{
@@ -1051,11 +1069,28 @@ h4
 	{
 		font-size:20px;
 	}
+	.content
+	{
+		min-height: 70%;
+	}
+	.accueil_content form
+	{
+		margin-top: 70px;
+	}
+
 	.header_content
 	{
 		height:20%;
 		flex-direction:column;
 	}
+	.deconnection_form input 
+	{
+		font-size: 0.8em
+	}
+	.user_name p
+	{
+		font-size: 0.8em;
+	}	
 	.logo_gbaf
 	{
 		height:60%;
@@ -1063,7 +1098,8 @@ h4
 	}
 	.user_ref
 	{
-		padding:0;
+		padding: 5px;
+		
 		height:40%;
 		justify-content:center;
 		margin:auto;
@@ -1112,9 +1148,14 @@ h4
 	{
 		margin-right:0;
 	}
+	.post_section p
+	{
+		font-size: 0.8em;
+	}
 	.case_commented, .acteur_like
 	{
 		/*height:3em;*/
+		font-size: 0.7em;
 		justify-content:center;
 		width: 100%;
 	}
@@ -1122,7 +1163,7 @@ h4
 	{
 		font-size: 1.2em;
 	}
-	.footer_content 
+	.footer_content p a
 	{
 		font-size: 0.9em;
 	}
@@ -1147,14 +1188,27 @@ h4
 	{
 		font-size:0.7em;
 	}
-	.acteur_description_phrase
+	.acteur_txt
 	{
-		padding:1em;
+		/*text-align: left;*/
+	}
+	.acteur_txt p
+	{
+		font-size: 1em;
+	}
+	.presentation_section p
+	{
+		font-size: 1em;
+	}
+	.acteur_description_phrase p
+	{
+		/*padding:1em;*/
+		text-align: left;
 	}
 	.acteur_description_phrase p
 	{
 		/*margin:auto;*/
-		font-size:1.2em;
+		font-size:1.1em;
 	}
 	.acteur_linkweb
 	{
@@ -1166,7 +1220,8 @@ h4
 	}
 	.acteur_full_description p
 	{
-		font-size:1.1em;
+		font-size:1em;
+		text-align: left;
 	}
 	.post
 	{
@@ -1189,10 +1244,31 @@ h4
 	}
 	.accueil_content input[type="submit"]
 	{
-		width: 100px;
+		width: 50%;
 	}
 	.accueil_content .long_legend
 	{
-		font-size: 1.2em;
+		/*font-size: 1.2em;*/
+	}
+	.inscription_content input[type="submit"], .profil_content input[type="submit"]
+	{
+		width: 50%;
+	}
+	.add_comment
+	{
+		width: 100%;
+		padding: 0;
+	}
+	.add_comment label
+	{
+		font-size: 0.8em;
+	}
+	.add_comment textarea
+	{
+		min-height: 100px;
+	}
+	.add_comment input[type="submit"]
+	{
+		width: 30%;
 	}
 }	

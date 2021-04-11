@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<?php include("../includes/header.php"); ?>
-		<section class ="content mention_legales_content">
+		<section class ="content mentions_legales_content">
 			<h1>MENTIONS LEGALES</h1>
 		</section>
 		<?php include("../includes/footer.php"); ?>

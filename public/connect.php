@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	//on supprime la variable de session appelée lors de la demande de mot de pass perdu
+	unset($_SESSION['usernamemdpc']);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -14,17 +16,19 @@
 		<?php include("../includes/header.php"); ?>
 			<div class="content accueil_content">
 			<?php
+			//si une session est ouverte on est dirigé vers l'accueil
 			if(isset($_SESSION['username']) AND !empty($_SESSION['username']))
 			{
 			header('Location: accueil.php');
 			}
-			else
+			else//si il n'y a pas de session->formulaire de connection
 			{
 			?>	
 			    <form class="connect_form" action="../control/cont_connect.php" method="post">
 					<fieldset>
 						<legend>Connexion</legend>
 							<?php
+							//affichage des erreurs et avertissements
 							if(isset($_SESSION['passchanged']))
 							{
 								    echo '<p style=color:red;>La modification du mot de passe a bien été prise en compte.</p>';

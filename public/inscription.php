@@ -1,5 +1,6 @@
 <?php
 session_start();
+unset($_SESSION['usernamemdpc']);
 	if(isset($_SESSION['username']))
 	{
 		header('Location: accueil.php');
