@@ -3,7 +3,7 @@
 		<a href="../public/accueil.php"><img src="../public/logos/gbaf.png" title="GBAF" alt="GBAF logo"/></a>
 	</div>
 	<?php
-		if(isset($_SESSION['username'])) //If session exist 
+		if(isset($_SESSION['username']) AND !empty($_SESSION['username'])) //si la variable de session est présente, on affiche le profil + bt deconnection 
 		{
 		$nom = htmlspecialchars($_SESSION['last_name']);
 		$prenom = htmlspecialchars($_SESSION['first_name']);
@@ -20,7 +20,7 @@
 			</div>
 	<?php
 		}
-		else // no session
+		else // pas de session
 		{
 	?>
 			

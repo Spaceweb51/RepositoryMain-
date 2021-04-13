@@ -1,22 +1,15 @@
 <?php
 session_start(); 
-if(isset($_SESSION['username'])) // si session active
+if(isset($_SESSION['username']) AND !empty($_SESSION['username'])) // si session active
 {
 	foreach($_POST as $key => $value)
 	{
-		$_POST[$key] = htmlspecialchars($_POST[$key]);
+		$_POST[$key] = htmlspecialchars($_POST[$key]); //htmlspecialchars pour tous
 	}
-	$username = htmlspecialchars($_SESSION['username']); //htmlspecialchars pour tous
+	$username = htmlspecialchars($_SESSION['username']); 
 	//connexion db
-	try
-	{
-	$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-	}
-	catch (Exception $e)
-	{
-	        die('Erreur : ' . $e->getMessage());
-	}
-
+	require ("../includes/db.php");
+	
 	// On récupère l'id user pour la suite
 	$result = $db->prepare('SELECT id_user FROM main WHERE username = :username');
 	$result->execute(array('username' => $username));
@@ -55,7 +48,7 @@ if(isset($_SESSION['username'])) // si session active
 		}			
 	}
 	// Gestion de changement mot de passe
-	if(!empty($_POST['pass1']) AND !empty($_POST['pass2']))
+	if(isset($_POST['pass1'], $_POST['pass2']) AND !empty($_POST['pass1']) AND !empty($_POST['pass2']))
 	{
 		if(!preg_match("#(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\d)(?=.*[^A-Za-z\d])#",$_POST['pass1']) OR strlen($_POST['pass1']) < 8)
 		{
@@ -79,7 +72,8 @@ if(isset($_SESSION['username'])) // si session active
 	}
 	//Gestion du changement de question secrète
 	//On teste si si l'utilisateur a bien rempli la question et la réponse   
-	if((!empty($_POST['question']) AND empty($_POST['answer'])) OR (empty($_POST['question']) AND !empty($_POST['answer'])))
+	if((isset($_POST['question']) AND !isset($_POST['answer'])) OR (!isset($_POST['question']) AND isset($_POST['answer'])) AND
+		(!empty($_POST['question']) AND empty($_POST['answer'])) OR (empty($_POST['question']) AND !empty($_POST['answer'])))
 	{
 		$error[] = 'emptyfield';
 	}

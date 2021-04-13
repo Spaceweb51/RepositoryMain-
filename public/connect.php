@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	//on supprime la variable de session appelée lors de la demande de mot de pass perdu
+	//on supprime la variable de session appelée lors de la demande de mot de passe perdu
 	unset($_SESSION['usernamemdpc']);
 ?>
 <!DOCTYPE html>

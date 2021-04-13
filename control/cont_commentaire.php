@@ -1,17 +1,11 @@
 <?php
 	session_start();
-if(isset($_GET['actorid']) AND isset($_SESSION['username'])) // on test la présence des variables
+if(isset($_GET['actorid']) AND isset($_SESSION['username']) AND !empty($_GET['actorid']) AND !empty($_SESSION['username'])) // on test la présence des variables
 {
 	$actorid = htmlspecialchars($_GET['actorid']);
-	$username = htmlspecialchars($_SESSION['username']);	
-	try
-	{
-	$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-	}
-	catch (Exception $e)
-	{
-	        die('Erreur : ' . $e->getMessage());
-	}
+	$username = htmlspecialchars($_SESSION['username']);
+	require ("../includes/db.php");	
+	
 	// On vérifie que $_GET['actorid'] a une valeur existante
 	$result = $db->prepare('SELECT id_actor FROM actor WHERE id_actor = :actorid');
 	$result->execute(array(':actorid' => $actorid));

@@ -14,18 +14,18 @@
 	<?php include("../includes/header.php"); ?>
 		<div class="content accueil_content">
 		<?php
-			if ((!isset($_SESSION['usernamemdpc']) AND !isset($_SESSION['answermdpc'])) OR (isset($_SESSION['noexist'])))
+			if ((!isset($_SESSION['usernamemdpc']) AND !isset($_SESSION['answermdpc'])) OR (isset($_SESSION['noexist'])) AND (empty($_SESSION['usernamemdpc']) AND empty($_SESSION['answermdpc'])) OR !empty($_SESSION['noexist']))
 			{
 		?>	
-				<form class="connect_form" action="../control/cont_reinit.php" method="post">
+				<form class="connection_form" action="../control/cont_reinit.php" method="post">
 					<fieldset>
-						<legend class="long_legend">Réinitialiser le mot de passe</legend>
+						<legend class="long_legend">Réinitialiser le mot de passe :</legend>
 
 						<label for="username">Veuillez saisir votre nom d'utilisateur :</label><input type="text" name="username" id="username" required />
 						<?php
 						if(isset($_SESSION['noexist']))
 							{
-									    echo '<p style=color:red;>Ce nom d\'utilisateur n\'existe pas, veuillez en saisir un nom d\'utilisateur valide.</p>';
+									    echo '<p style=color:red;>Ce nom d\'utilisateur n\'existe pas, veuillez saisir un nom d\'utilisateur valide.</p>';
 									    unset($_SESSION['noexist']);
 							}
 						?>		
@@ -34,12 +34,13 @@
 				</form>					
 		<?php		
 			}
-			if ((isset($_SESSION['usernamemdpc']) AND !isset($_SESSION['answermdpc']) AND !isset($_SESSION['noexist'])) OR (isset($_SESSION['novalidanswer']) AND isset($_SESSION['invalidpass']) AND isset($_SESSION['passnomatch']))) 
+			if ((isset($_SESSION['usernamemdpc']) AND !isset($_SESSION['answermdpc']) AND !isset($_SESSION['noexist'])) OR (isset($_SESSION['novalidanswer']) AND isset($_SESSION['invalidpass']) AND isset($_SESSION['passnomatch']))
+				AND (!empty($_SESSION['usernamemdpc']) AND empty($_SESSION['answermdpc']) AND empty($_SESSION['noexist'])) OR (!empty($_SESSION['novalidanswer']) AND !empty($_SESSION['invalidpass']) AND !empty($_SESSION['passnomatch']))) 
 			{
 		?>		
-				<form class="connect_form" action="../control/cont_reinit.php" method="post">
+				<form class="connection_form" action="../control/cont_reinit.php" method="post">
 					<fieldset>
-						<legend class="long_legend">Réinitialiser le mot de passe</legend>
+						<legend class="long_legend">Réinitialiser le mot de passe :</legend>
 							<label for="answer">Bonjour<?php echo ' ' . $_SESSION['usernamemdpc'] . ', votre question secrète est : ' . $_SESSION['questionmdpc'] . ' ? Quelle est votre réponse ?'; ?> </label><input type="text" name="answer" id="answer" required />
 							<?php
 							if(isset($_SESSION['novalidanswer']))

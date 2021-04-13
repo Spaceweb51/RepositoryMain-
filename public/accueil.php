@@ -14,6 +14,7 @@
 	<?php include("../includes/header.php"); ?>
 		<div class="content accueil_content">
 			<?php
+			//si une session est ouverte (si on est connecté) ouverture de la page
 			if(isset($_SESSION['username']) AND !empty($_SESSION['username']))
 			{
 			?>
@@ -38,14 +39,8 @@
 						<p>Vous trouverez ici un point d’entrée unique, répertoriant un grand nombre d’informations sur les partenaires et acteurs du groupe ainsi que sur les produits et services bancaires et financiers. Dans le but de mieux cerner les qualités et compétence de chacun, nous vous invitons à y laisser des commentaires et des apréciations constructives.</p>
 				</div>
 					<?php // Récupération des infos et extraits de tous les partenaires
-						try
-						{
-							$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-						}
-						catch (Exception $e)
-						{
-						    	die('Erreur : ' . $e->getMessage());
-						}
+						require ("../includes/db.php");
+						
 						$result = $db->query('SELECT * FROM actor');
 						while($data = $result->fetch())
 						{

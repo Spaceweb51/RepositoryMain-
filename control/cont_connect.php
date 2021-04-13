@@ -1,14 +1,9 @@
-<?php//si on a le username et le password
-if(isset($_POST) AND !empty($_POST['username']) AND !empty($_POST['password']))
+<?php
+//si on a le username et le password
+if(isset($_POST['username'], $_POST['password']) AND !empty($_POST['username']) AND !empty($_POST['password']))
 {	//connection bdd
-	try
-	{
-	$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-	}
-	catch (Exception $e)
-	{
-	        die('Erreur : ' . $e->getMessage());
-	}
+	require ("../includes/db.php");
+	
 	$username = htmlspecialchars($_POST['username']);
 	$password = htmlspecialchars($_POST['password']);
 	//on verifie le username et le password dans la bdd
@@ -25,7 +20,8 @@ if(isset($_POST) AND !empty($_POST['username']) AND !empty($_POST['password']))
 		$_SESSION['username'] = $content['username'];
 		header('Location: ../public/accueil.php');
 	}
-	else // mauvais username ou password
+	else
+	// mauvais username ou password
 	{
 		session_start();
 		$_SESSION['wrong'] = true ;

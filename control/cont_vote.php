@@ -1,21 +1,13 @@
 <?php
 session_start();
-if (isset($_GET['actorid'], $_GET['vote']) AND !empty($_GET['actorid']) AND !empty($_GET['vote']))
+if (isset($_GET['actorid'], $_GET['vote']) AND !empty($_GET['actorid']) AND !empty($_GET['vote'])) //test la présence des variables
 {
 	$vote = htmlspecialchars($_GET['vote']);
 	if($vote >= 1 AND $vote <= 2)// si la demande est valide
 	{
-		try
-			{
-			$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-			}
-			catch (Exception $e)
-			{
-			        die('Erreur : ' . $e->getMessage());
-			}
-
+		require ("../includes/db.php");
+		
 		$actorid = htmlspecialchars($_GET['actorid']);
-		//$vote = htmlspecialchars($_GET['vote']);
 		$username = htmlspecialchars($_SESSION['username']);
 		// On vérifie que $_GET['actorid'] a une valeur existante
 		$result = $db->prepare('SELECT id_actor FROM actor WHERE id_actor = :actorid');

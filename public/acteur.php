@@ -14,18 +14,13 @@
 	<?php include("../includes/header.php"); ?>
 	<div class="content acteur_content">
 		<?php
-		if(isset($_GET['actorid']) AND isset($_SESSION['username'])) // si connecté et si on a l'id de l'acteur
+		// si connecté et si on a l'id de l'acteur
+		if(isset($_GET['actorid']) AND isset($_SESSION['username'])) 
 		{
 			$username = htmlspecialchars($_SESSION['username']);
 			$actorid = htmlspecialchars($_GET['actorid']);
-			try
-			{
-			$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root');
-			}
-			catch (Exception $e)
-			{
-			    die('Erreur : ' . $e->getMessage());
-			}
+			require ("../includes/db.php");
+			
 			$result = $db->prepare('SELECT * FROM actor WHERE id_actor = :actorid');
 			$result->execute(array('actorid' => $actorid));
 			$data = $result->fetch();
@@ -101,21 +96,22 @@
 							$result = $db->prepare('SELECT * FROM vote WHERE id_actor = :actorid AND id_user = :id_user AND rates = 2');
 							$result->execute(array('actorid' => $actorid,'id_user' => $id_user));
 							$dislikes = $result->fetch();
+							//et renvoi des données pour l'affichage des likes,dislikes et leurs nombres
 							?>
-							<div class="acteur_like">
+							<div class="acteur_like" id='likes'>
 								<div class="acteur_like_sub">
 									<?php
 									if($likes)
 									{
 									?>
 										Je recommande<p class="separateur"> | </p>  
-					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=1" title="like">( <?php echo $likes_number; ?> ) Likes<img src="logos/like_blue.png" class="like_button" alt="like_button"/></a>
+					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=1#likes" title="like">( <?php echo $likes_number; ?> ) Likes<img src="logos/like_blue.png" class="like_button" alt="like_button"/></a>
 					    			<?php
 					    			}
 					    			else
 					    			{
 					    			?>	
-					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=1" title="like">( <?php echo $likes_number; ?> ) Likes <img src="logos/like.png" class="like_button" alt="like_button"/></a>
+					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=1#likes" title="like">( <?php echo $likes_number; ?> ) Likes <img src="logos/like.png" class="like_button" alt="like_button"/></a>
 					    			<?php
 					    			}
 					    			?>	
@@ -124,14 +120,14 @@
 					    			if($dislikes)
 	                                {
 	                                ?>
-	                                	<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=2"	title="dislike">( <?php echo $dislikes_number; ?> ) Dislikes<img src="logos/dislike_red.png" class="dislike_button" alt="dislike_button"/></a>
+	                                	<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=2#likes"	title="dislike">( <?php echo $dislikes_number; ?> ) Dislikes<img src="logos/dislike_red.png" class="dislike_button" alt="dislike_button"/></a>
 					    				<p class="separateur"> | </p>Je déconseille	
 					    			<?php
 					    			}
 					    			else
 					    			{
 					    			?>
-					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=2"	title="dislike">( <?php echo $dislikes_number; ?> ) Dislikes<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
+					    				<a href="../control/cont_vote.php?actorid=<?php echo $actorid; ?>&vote=2#likes"	title="dislike">( <?php echo $dislikes_number; ?> ) Dislikes<img src="logos/dislike.png" class="dislike_button" alt="dislike_button"/></a>
 					    			<?php
 					    			}
 					    			?>
@@ -140,7 +136,8 @@
 				    </div>
 				 <section class="post_section">
 				 	<h4>Commentaires :</h4>
-				 	<?php // Affichage des avertissement et erreurs
+				 	<?php 
+				 	// Affichage des avertissement et erreurs
 				 	if(isset($_SESSION['posted']))
 					{
 						    echo '<p style=color:red;>Votre commentaire a bien été ajouté.</p>';
@@ -171,6 +168,7 @@
 					$result->execute(array('actorid' => $actorid));
 					$data = $result->fetch();
 					$result->closeCursor();
+					//si pas de commentaire:
 					if(!$data)
 					{
 						?>
@@ -190,6 +188,7 @@
 					{
 						$nom = htmlspecialchars($data['nom']);
 						$prenom = htmlspecialchars($data['prenom']);
+						//mise au format de la date pour affichage  (aaaa-mm-jj hh:mm:ss)->(Le jj/mm/aaaa)
 						$date = preg_replace("#([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}:[0-9]{2}:[0-9]{2})#","Le $3/$2/$1",$data['datepost']);
 						$post = htmlspecialchars($data['post']);
 						?>
@@ -206,6 +205,7 @@
 			?>	 	
 				</section>
 				<?php
+				//affichage du textarea pour saisir le post ou le modifier 
 				if(isset($_GET['add']) AND $_GET['add'] == 1)
 				{
 				?>	

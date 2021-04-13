@@ -74,9 +74,7 @@ h1, h2, h3, h4
 .user_photo img
 {
 	height:100%;
-	width:auto;
-	/*border-radius:100%;
-	box-shadow:1px 1px 5px 1px black;*/
+	width:auto;	
 	transition: .4s;
 }
 .user_photo img:hover
@@ -160,7 +158,6 @@ h1, h2, h3, h4
 
 	width:66%;
 	margin:auto;
-	/*margin-top:10%;*/
 }
 .accueil_content fieldset, .reinit_content fieldset
 {
@@ -237,7 +234,6 @@ h1, h2, h3, h4
 .accueil_content input[type="submit"], .reinit_content input[type="submit"]
 {
 	width:20%;
-	/*height:3em;*/
 	margin-top:3em;
 	margin-bottom:3em;
 	border-radius:2em;
@@ -456,8 +452,6 @@ legend
 .inscription_content input[type="submit"], .profil_content input[type="submit"]
 {
 	width:20%;
-	/*height:3em;*/
-	/*margin-top:3em;*/
 	border-radius: 2em;
 	font-family: 'Georgia';
 	font-size: 16px;
@@ -570,24 +564,18 @@ p .titre2_modif
 .acteur_like_com
 {
 	max-width:94%;
-	/*margin-right:3%;*/
 	font-size: 1em;
 	display:flex;
-	/*justify-content:flex-start;*/
 	flex-wrap:wrap;
-	/*margin-left:auto;*/
 	margin-right: auto;
 	align-items:center;
 	margin-bottom:2em;
 }
 .case_commented, .acteur_like_com > a, .acteur_like
 {
-	/*margin-left:.5em;*/
 	margin-right:.5em;
 	margin-bottom:.5em;
 	display:inline-block;
-	/*background:#DDD;*/
-	/*height:1.1em;*/
 	border:1px solid black;
 	border-radius:1em;
 	padding:1em;
@@ -667,13 +655,11 @@ p.separateur
 h4
 {
 	margin-top:0;
-	/*font-size:1.5em;*/
 	margin-left:3%;
 }
 .post
 {
 	border-radius:7px;
-	/*background:#DDD;*/
 	border:solid black 1px;
 	padding:1em;
 	padding-top:.5em;
@@ -724,8 +710,6 @@ h4
 {
 	margin:auto;
 	width:20%;
-	/*height:3em;*/
-	/*margin-top:3em;*/
 	border-radius: 1em;
 	font-family: 'Georgia';
 	font-size: 16px;
@@ -892,15 +876,6 @@ h4
 	{
 		font-size:20px;
 	}
-	/*.inscription_link
-	{
-		justify-content:center;
-		margin:auto;
-	}*/
-	/*.acteur_full
-	{
-		border-radius:1em;
-	}*/
 	.presentation_section p, .acteur_txt p
 	{
 		padding-left:3%;
@@ -1027,7 +1002,6 @@ h4
 	.profil_content fieldset > input[type="submit"]
 	{
 		height:2em;
-		/*width:25%;*/
 	} 
 	.user_ref
 	{
@@ -1136,14 +1110,6 @@ h4
 		margin-bottom:1em;
 		font-size:1em;
 	}
-	/*.acteur_content
-	{
-		width: 90%;
-	}
-	.acteur_full
-	{
-		border-radius:1em;
-	}*/
 	.acteur_like_com
 	{
 		margin-right:0;
@@ -1154,7 +1120,6 @@ h4
 	}
 	.case_commented, .acteur_like
 	{
-		/*height:3em;*/
 		font-size: 0.7em;
 		justify-content:center;
 		width: 100%;
@@ -1167,11 +1132,6 @@ h4
 	{
 		font-size: 0.9em;
 	}
-	/*.presentation_section p, .actors_txt p
-	{
-		padding-left:3%;
-		padding-right:3%;
-	}*/
 	.illustration
 	{
 		min-height:150px;
@@ -1202,12 +1162,10 @@ h4
 	}
 	.acteur_description_phrase p
 	{
-		/*padding:1em;*/
 		text-align: left;
 	}
 	.acteur_description_phrase p
 	{
-		/*margin:auto;*/
 		font-size:1.1em;
 	}
 	.acteur_linkweb

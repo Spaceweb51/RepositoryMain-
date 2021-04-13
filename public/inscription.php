@@ -1,11 +1,13 @@
 <?php
 session_start();
+//on supprime la variable de session appelée lors de la demande de mot de passe perdu
 unset($_SESSION['usernamemdpc']);
 	if(isset($_SESSION['username']))
 	{
 		header('Location: accueil.php');
 	}
 	else
+	//Si il n'y a pas de session en cours	
 	{
 ?>
 	<!DOCTYPE html>
@@ -24,6 +26,7 @@ unset($_SESSION['usernamemdpc']);
 						<fieldset>
 							<legend>Inscription</legend>
 								<?php
+								//affichage des erreurs et avertissements en renvoi dans le formulaire
 								if(isset($_SESSION['entrymissing']))								
 								{
 								    echo '<p style=color:red;>Un ou plusieurs champs sont manquants.</p>';

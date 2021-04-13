@@ -1,16 +1,9 @@
 <?php
 	session_start();
-	try
-	{
-		$db = new PDO('mysql:host=localhost;dbname=gbaf;charset=utf8', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-	}
-		catch (Exception $e)
-	{
-	    die('Erreur : ' . $e->getMessage());
-	}
-
+	require ("../includes/db.php");
+	
 	// l'utilisateur a entré son username
-	if (isset($_POST['username'])) 
+	if (isset($_POST['username']) AND !empty($_POST['username'])) 
 	{
 		// récupération de la question secrète de l'utilisateur
 		$username = htmlspecialchars($_POST['username']);
@@ -25,7 +18,7 @@
 			$_SESSION['usernamemdpc'] = $data['username'];
 			$_SESSION['questionmdpc'] = $data['question'];
 		}	
-		if (!$data)
+		if ($data['username'] != $_POST['username'])
 		{
 			// if username don't exist
 			$_SESSION['noexist'] = true;			
@@ -34,7 +27,8 @@
 	}
 
 	// the user has entered their answers
-	if (isset($_POST['answer']) AND isset($_SESSION['usernamemdpc']) AND isset($_SESSION['questionmdpc']) AND isset($_POST['pass1']) AND isset($_POST['pass2'])) 
+	if (isset($_POST['answer']) AND isset($_SESSION['usernamemdpc']) AND isset($_SESSION['questionmdpc']) AND isset($_POST['pass1']) AND isset($_POST['pass2'])
+		AND !empty($_POST['answer']) AND !empty($_SESSION['usernamemdpc']) AND !empty($_SESSION['questionmdpc']) AND !empty($_POST['pass1']) AND !empty($_POST['pass2'])) 
 	{
 		// vérification de la réponse
 		$username = htmlspecialchars($_SESSION['usernamemdpc']);

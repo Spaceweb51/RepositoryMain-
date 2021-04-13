@@ -1,6 +1,6 @@
 <?php
 session_start();
-	if(isset($_SESSION['username'])) //Si session active 
+	if(isset($_SESSION['username']) AND !empty($_SESSION['username'])) //Si session active on affiche les infos du profil
 	{
 	$nom = htmlspecialchars($_SESSION['last_name']);
 	$prenom = htmlspecialchars($_SESSION['first_name']);
