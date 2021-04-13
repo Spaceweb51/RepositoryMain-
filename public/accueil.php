@@ -26,9 +26,9 @@
 								<a href="#"><img src="logos/bank/BP.jpg" alt="banque_postale"/></a>
 								<a href="#"><img src="logos/bank/CA.png" alt="credit_agricole"/></a>
 								<a href="#"><img src="logos/bank/SG.png" alt="societe_generale"/></a>
-								<a href="#"><img src="logos/bank/CIC.png" alt="cic"/></a>						
+								<a href="#"><img src="logos/bank/CIC.png" alt="cic"/></a>			
 								<a href="#"><img src="logos/bank/BPCE.png" alt="bpce"/></a>
-								<a href="#"><img src="logos/bank/CM.png" alt="credit_mutuel"/></a>						
+								<a href="#"><img src="logos/bank/CM.png" alt="credit_mutuel"/></a>	
 								<a href="#"><img src="logos/bank/BNP.png" alt="bnp_paribas"/></a>
 							</div>
 						</div>

@@ -96,7 +96,7 @@ h1, h2, h3, h4
 	color:#000;
 	transition: .5s;
 }
-.inscription_link a:hover,.user_name a:hover, 
+.inscription_link a:hover,.user_name a:hover 
 {
 	color: #195891;
 	transition: .3s;
