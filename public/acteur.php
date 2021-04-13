@@ -15,7 +15,7 @@
 	<div class="content acteur_content">
 		<?php
 		// si connecté et si on a l'id de l'acteur
-		if(isset($_GET['actorid']) AND isset($_SESSION['username'])) 
+		if(isset($_GET['actorid']) AND isset($_SESSION['username']) AND !empty($_GET['actorid']) AND !empty($_SESSION['username'])) 
 		{
 			$username = htmlspecialchars($_SESSION['username']);
 			$actorid = htmlspecialchars($_GET['actorid']);

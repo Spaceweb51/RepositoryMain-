@@ -30,7 +30,7 @@ if(isset($_POST) AND !empty($_POST['last_name'])
 		// si le username est trop court
 		$error[] = 'short';
 	}
-	//traitement de la chaine de caractère du password, pour vérifier son format et sa taille
+	//traitement de la chaine de caractère du password, pour vérifier son format et sa taille (utilisation des expressions régulières)
 	if(!preg_match("#(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\d)(?=.*[^A-Za-z\d])#",$_POST['pass1']) OR strlen($_POST['pass1']) < 8)
 	{
 		// si le format du password n'est pas bon
